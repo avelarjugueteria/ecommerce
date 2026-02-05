@@ -19,7 +19,7 @@ export default function Header({ cartCount, onSearch }) {
             {/* Top Bar */}
             <div className="w-full bg-brand-black text-white text-xs py-1.5 px-4 flex justify-between items-center hidden md:flex border-b border-gray-800">
                 <div className="flex gap-6">
-                    <span className="flex items-center gap-1.5 opacity-90 hover:opacity-100 cursor-pointer"><Phone size={12} /> Soporte B2B: 55-1234-5678</span>
+
                     <span className="flex items-center gap-1.5 opacity-90 hover:opacity-100 cursor-pointer"><FileText size={12} /> Catálogo PDF</span>
                 </div>
                 <div className="flex gap-4 opacity-80">

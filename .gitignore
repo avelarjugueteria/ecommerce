@@ -23,6 +23,17 @@ dist-ssr
 *.sln
 *.sw?
 
+
 # Environment Variables
 .env
 .env.local
+
+# Local Data & Debug Scripts
+*.csv
+*.txt
+check_*.js
+debug_*.js
+find_*.js
+inspect_*.js
+list_*.js
+test_*.js

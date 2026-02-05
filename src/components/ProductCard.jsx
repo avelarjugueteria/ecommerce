@@ -21,8 +21,8 @@ export default function ProductCard({ product, onAddToCart }) {
         <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 group flex flex-col h-full">
             <div className="relative pt-[100%] bg-white p-6 border-t-4 border-blue-500">
                 <img
-                    src={product.image_url || 'https://via.placeholder.com/300'}
-                    alt={product.name}
+                    src={product.image_url || product.main_image_url || 'https://via.placeholder.com/300'}
+                    alt={product.name || product.title}
                     className="absolute inset-0 w-full h-full object-contain p-6 group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute top-3 left-3 flex flex-col gap-1">
@@ -37,14 +37,14 @@ export default function ProductCard({ product, onAddToCart }) {
 
             <div className="p-5 flex flex-col flex-1 border-t border-gray-100 relative">
                 <div className="text-[10px] font-bold text-gray-400 mb-1 uppercase tracking-wider">{product.sku}</div>
-                <h3 className="font-bold text-gray-900 leading-tight mb-4 line-clamp-2 min-h-[2.5em] text-[15px]">{product.name}</h3>
+                <h3 className="font-bold text-gray-900 leading-tight mb-4 line-clamp-2 min-h-[2.5em] text-[15px]">{product.name || product.title}</h3>
 
                 <div className="mt-auto space-y-4">
                     <div className="bg-gray-50 p-2 rounded-lg">
                         <span className="block text-[10px] text-gray-400 uppercase font-bold">Mayoreo</span>
                         <div className="flex items-baseline gap-0.5">
                             <span className="text-sm font-bold text-[#1A1A1A]">$</span>
-                            <span className="text-xl font-black text-[#1A1A1A]">{product.wholesale_price}</span>
+                            <span className="text-xl font-black text-[#1A1A1A]">{product.price || product.wholesale_price}</span>
                         </div>
                     </div>
 

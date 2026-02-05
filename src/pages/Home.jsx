@@ -26,8 +26,7 @@ export default function Home({ onAddToCart, searchTerm }) {
         // Fetch from Supabase
         const { data, error } = await supabase
             .from('products')
-            .select('*')
-            .eq('active', true);
+            .select('*');
 
         if (!error && data && data.length > 0) {
             setProducts(data);
@@ -45,7 +44,7 @@ export default function Home({ onAddToCart, searchTerm }) {
         if (searchTerm) {
             const lower = searchTerm.toLowerCase();
             result = result.filter(p =>
-                p.name.toLowerCase().includes(lower) ||
+                (p.name || p.title || '').toLowerCase().includes(lower) ||
                 p.sku.toLowerCase().includes(lower) ||
                 p.brand.toLowerCase().includes(lower)
             );
@@ -76,9 +75,9 @@ export default function Home({ onAddToCart, searchTerm }) {
                 y = 20;
             }
             doc.setFontSize(12);
-            doc.text(`${p.sku} - ${p.name}`, 10, y);
+            doc.text(`${p.sku} - ${p.name || p.title}`, 10, y);
             doc.setFontSize(10);
-            doc.text(`Marca: ${p.brand} | Precio Mayoreo: $${p.wholesale_price}`, 10, y + 5);
+            doc.text(`Marca: ${p.brand} | Precio Mayoreo: $${p.price || p.wholesale_price}`, 10, y + 5);
             // Images in PDF are tricky without CORS/Proxy, skipping for basic prototype or could add if base64 available
             y += 15;
         });
